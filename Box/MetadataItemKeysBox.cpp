@@ -4,14 +4,14 @@
 
 #include "MetadataItemKeysBox.h"
 
-MetadataItemKeysBox::MetadataItemKeysBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type,
+MetadataItemKeysBox::MetadataItemKeysBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type,
                                                                                                     start_pos) {}
 
 MetadataItemKeysBox::~MetadataItemKeysBox() {
 
 }
 
-void MetadataItemKeysBox::Parse(struct Parser *parser, uint64_t start_pos) {
+void MetadataItemKeysBox::Parse(struct Parser *parser, uint32_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     FileReader *file_reader = parser->file_reader;

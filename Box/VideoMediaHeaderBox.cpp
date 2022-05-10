@@ -4,13 +4,13 @@
 
 #include "VideoMediaHeaderBox.h"
 
-VideoMediaHeaderBox::VideoMediaHeaderBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type, start_pos) {}
+VideoMediaHeaderBox::VideoMediaHeaderBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type, start_pos) {}
 
 VideoMediaHeaderBox::~VideoMediaHeaderBox() {
 
 }
 
-void VideoMediaHeaderBox::Parse(struct Parser *parser, uint64_t start_pos) {
+void VideoMediaHeaderBox::Parse(struct Parser *parser, uint32_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     graphics_mode = parser->file_reader->Read16();

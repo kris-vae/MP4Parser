@@ -35,8 +35,8 @@ public:
 
 public:
     void init();
-    Box *ReadBox(uint64_t start_pos, bool is_item_box = false);
-    Box *CreateBox(uint32_t size, uint32_t type, uint64_t start_pos, bool is_item_box = false);
+    Box *ReadBox(uint32_t start_pos, bool is_item_box = false);
+    Box *CreateBox(uint32_t size, uint32_t type, uint32_t start_pos, bool is_item_box = false);
     void DestroyBox(class Box *box);
     int Parse(const char *path);
     Box *ParseResult();

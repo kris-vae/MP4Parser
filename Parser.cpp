@@ -60,7 +60,7 @@ void Parser::init() {
     height = 0;
 }
 
-Box *Parser::CreateBox(uint32_t size, uint32_t type, uint64_t start_pos, bool is_item_box) {
+Box *Parser::CreateBox(uint32_t size, uint32_t type, uint32_t start_pos, bool is_item_box) {
     Box *box = nullptr;
 
     if (is_item_box) {
@@ -162,7 +162,7 @@ Box *Parser::CreateBox(uint32_t size, uint32_t type, uint64_t start_pos, bool is
     return box;
 }
 
-Box *Parser::ReadBox(uint64_t start_pos, bool is_item_box) {
+Box *Parser::ReadBox(uint32_t start_pos, bool is_item_box) {
     uint32_t offset = 0;
 
     uint32_t size = file_reader->Read32();
@@ -279,6 +279,8 @@ void Parser::SamplePosition(struct Stream *s) {
             uint64_t offset = s->stco_data[chunk_index - 1];
 
             for (uint32_t k = 0; k < s->stsc_data[i].samples_per_chunk; k++) {
+                if (offset < 0)
+                    printf("stop\n");
                 s->sample_position[sample_index] = offset;
                 offset += s->stsz_data[sample_index];
                 sample_index++;

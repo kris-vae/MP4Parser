@@ -32,9 +32,9 @@ private:
     bool is_show_video_sample;
 
 private:
-    void DisplayHexFromReader(class FileReader* file_reader, uint64_t start_pos, uint32_t len);
+    void DisplayHexFromReader(class FileReader* file_reader, uint32_t start_pos, uint32_t len);
     void DisplayHex(uint8_t *buffer, uint32_t len);
-    void SetHighlight(uint64_t start_pos, uint32_t len);
+    void SetHighlight(uint32_t start_pos, uint32_t len);
 
     void ResetSampleInfo();
     Box *GetItemBox(QTreeWidgetItem *item);

@@ -9,9 +9,9 @@
 
 class AudioSampleEntry : public Box {
 public:
-    AudioSampleEntry(uint32_t size, uint32_t type, uint32_t startPos);
+    AudioSampleEntry(uint32_t size, uint32_t type, uint32_t start_pos);
     virtual ~AudioSampleEntry();
-    void Parse(struct Parser *parser, uint64_t start_pos) override;
+    void Parse(struct Parser *parser, uint32_t start_pos) override;
 };
 
 

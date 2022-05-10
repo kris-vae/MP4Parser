@@ -4,14 +4,14 @@
 
 #include "IndependentAndDisposableSamplesBox.h"
 
-IndependentAndDisposableSamplesBox::IndependentAndDisposableSamplesBox(uint32_t size, uint32_t type, uint64_t start_pos)
+IndependentAndDisposableSamplesBox::IndependentAndDisposableSamplesBox(uint32_t size, uint32_t type, uint32_t start_pos)
         : FullBox(size, type, start_pos) {}
 
 IndependentAndDisposableSamplesBox::~IndependentAndDisposableSamplesBox() {
 
 }
 
-void IndependentAndDisposableSamplesBox::Parse(struct Parser *parser, uint64_t start_pos) {
+void IndependentAndDisposableSamplesBox::Parse(struct Parser *parser, uint32_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     uint32_t number_of_entries = size - 12;

@@ -13,9 +13,9 @@ public:
     uint32_t local_indicator;
     std::string description;
 public:
-    MetadataItemValueBox(uint32_t size, uint32_t type, uint64_t start_pos);
+    MetadataItemValueBox(uint32_t size, uint32_t type, uint32_t start_pos);
     virtual ~MetadataItemValueBox();
-    void Parse(struct Parser *parser, uint64_t start_pos) override;
+    void Parse(struct Parser *parser, uint32_t start_pos) override;
 };
 
 

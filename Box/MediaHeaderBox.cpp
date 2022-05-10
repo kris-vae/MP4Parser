@@ -4,7 +4,7 @@
 
 #include "MediaHeaderBox.h"
 
-MediaHeaderBox::MediaHeaderBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type, start_pos) {}
+MediaHeaderBox::MediaHeaderBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type, start_pos) {}
 
 MediaHeaderBox::~MediaHeaderBox() {
 
@@ -20,7 +20,7 @@ static void make_language_iso639(uint16_t lang, std::string &language)
     language[0] = (lang & 0x001f) + 0x60;
 }
 
-void MediaHeaderBox::Parse(struct Parser *parser, uint64_t start_pos) {
+void MediaHeaderBox::Parse(struct Parser *parser, uint32_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     FileReader *file_reader = parser->file_reader;

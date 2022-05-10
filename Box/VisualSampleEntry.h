@@ -9,9 +9,9 @@
 
 class VisualSampleEntry : public Box{
 public:
-    VisualSampleEntry(uint32_t size, uint32_t type, uint32_t startPos);
+    VisualSampleEntry(uint32_t size, uint32_t type, uint32_t start_pos);
     virtual ~VisualSampleEntry();
-    void Parse(struct Parser *parser, uint64_t start_pos) override;
+    void Parse(struct Parser *parser, uint32_t start_pos) override;
 };
 
 

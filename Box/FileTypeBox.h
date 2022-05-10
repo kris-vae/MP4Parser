@@ -16,10 +16,10 @@ public:
     std::vector<std::string> compatible_brands_name;
 
 public:
-    FileTypeBox(uint32_t size, uint32_t type, uint64_t start_pos);
+    FileTypeBox(uint32_t size, uint32_t type, uint32_t start_pos);
     virtual ~FileTypeBox();
 
-    virtual void Parse(struct Parser *parser, uint64_t start_pos) override;
+    virtual void Parse(struct Parser *parser, uint32_t start_pos) override;
 };
 
 

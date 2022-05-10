@@ -6,14 +6,14 @@
 #include "VisualSampleEntry.h"
 #include "AudioSampleEntry.h"
 
-SampleDescriptionBox::SampleDescriptionBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type,
+SampleDescriptionBox::SampleDescriptionBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type,
                                                                                                       start_pos) {}
 
 SampleDescriptionBox::~SampleDescriptionBox() {
 
 }
 
-void SampleDescriptionBox::Parse(struct Parser *parser, uint64_t start_pos) {
+void SampleDescriptionBox::Parse(struct Parser *parser, uint32_t start_pos) {
     FullBox::Parse(parser, start_pos);
     Stream *s = parser->streams[parser->stream_num - 1];
     FileReader *file_reader = parser->file_reader;

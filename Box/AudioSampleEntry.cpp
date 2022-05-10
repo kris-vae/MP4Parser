@@ -4,13 +4,13 @@
 
 #include "AudioSampleEntry.h"
 
-AudioSampleEntry::AudioSampleEntry(uint32_t size, uint32_t type, uint32_t startPos) : Box(size, type, startPos) {}
+AudioSampleEntry::AudioSampleEntry(uint32_t size, uint32_t type, uint32_t start_pos) : Box(size, type, start_pos) {}
 
 AudioSampleEntry::~AudioSampleEntry() {
 
 }
 
-void AudioSampleEntry::Parse(struct Parser *parser, uint64_t start_pos) {
+void AudioSampleEntry::Parse(struct Parser *parser, uint32_t start_pos) {
     Box::Parse(parser, start_pos);
     FileReader *file_reader = parser->file_reader;
     file_reader->Seek(start_pos);

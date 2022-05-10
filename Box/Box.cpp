@@ -7,7 +7,7 @@
 
 const uint32_t interval_second = 2082816000;
 
-Box::Box(uint32_t size, uint32_t type, uint64_t start_pos) : size(size), type(type), start_pos(start_pos) {
+Box::Box(uint32_t size, uint32_t type, uint32_t start_pos) : size(size), type(type), start_pos(start_pos) {
     name = ConvertToString(type);
     child_head = nullptr;
     child_trail = nullptr;
@@ -59,6 +59,6 @@ std::string Box::ConvertToFormatterTime(uint32_t time) {
     return ss.str();
 }
 
-void Box::Parse(struct Parser *parser, uint64_t start_pos) {
+void Box::Parse(struct Parser *parser, uint32_t start_pos) {
 
 }

@@ -113,7 +113,7 @@ void MainWindow::DisplayHex(uint8_t *buffer, uint32_t len) {
     }
 }
 
-void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint64_t start_pos, uint32_t len) {
+void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint32_t start_pos, uint32_t len) {
     uint8_t *buffer = new uint8_t[len];
     file_reader->Seek(start_pos);
     file_reader->ReadToBuffer(buffer, len);
@@ -122,7 +122,7 @@ void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint64_t start_
     SetHighlight(0, 0);
 }
 
-void MainWindow::SetHighlight(uint64_t start_pos, uint32_t len) {
+void MainWindow::SetHighlight(uint32_t start_pos, uint32_t len) {
     QTextEdit *edit = ui->hexView;
     QTextCursor cursor = edit->textCursor();
 
@@ -249,13 +249,13 @@ void MainWindow::ShowSample(Stream *s, uint32_t index) {
     ui->lineEditSample->setText(tmp);
 
     ui->hexView->clear();
-    uint32_t start = s->sample_position[index - 1];
+    uint64_t start = s->sample_position[index - 1];
     uint32_t len = s->stsz_data[index - 1];
 
     DisplayHexFromReader(file_reader, start, len);
 
     char sample_info[1024];
-    sprintf(sample_info, "Position = %d\nLength = %d (0x%02X)\n", start, len, len);
+    sprintf(sample_info, "Position = %ld\nLength = %d (0x%02X)\n", start, len, len);
     ui->textEditSampleInfo->setText(sample_info);
 }
 

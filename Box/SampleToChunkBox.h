@@ -13,11 +13,11 @@ public:
     std::vector<SampleToChunkItem> sample_to_chunk_item_table;
 
 public:
-    SampleToChunkBox(uint32_t size, uint32_t type, uint64_t start_pos);
+    SampleToChunkBox(uint32_t size, uint32_t type, uint32_t start_pos);
 
     virtual ~SampleToChunkBox();
 
-    void Parse(struct Parser *parser, uint64_t start_pos) override;
+    void Parse(struct Parser *parser, uint32_t start_pos) override;
 };
 
 
