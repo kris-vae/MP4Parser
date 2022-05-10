@@ -26,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ResetSampleInfo();
     ui->tabWidget->setCurrentIndex(0);
-    ui->hexView->append(QString::fromStdString("Test"));
 }
 
 MainWindow::~MainWindow() {
@@ -100,7 +99,7 @@ void MainWindow::DisplayHex(uint8_t *buffer, uint32_t len) {
         if ((i + 1) * 16 > len) num = len - i * 16;
 
         for (uint32_t j = 0; j < num; j++) {
-            str1 += QString::asprintf("%02x%c", buffer[index], ' ');
+            str1 += QString::asprintf("%02X%c", buffer[index], ' ');
             str2 += QString::asprintf("%c", GetPrintableChar(buffer[index]));
             index++;
         }

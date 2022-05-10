@@ -20,7 +20,7 @@ void SampleDescriptionBox::Parse(struct Parser *parser, uint32_t start_pos) {
     number_of_entries = file_reader->Read32();
     sample_description_item_table = std::vector<SampleDescriptionItem>(number_of_entries);
 
-    int index = 8;
+    int index = 16;
     for (size_t i = 0; i < sample_description_item_table.size(); i++) {
 
         Box *box = nullptr;

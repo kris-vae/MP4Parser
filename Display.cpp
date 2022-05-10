@@ -39,12 +39,13 @@ void HandleStreamInfo(const Parser *parser, QString &info) {
         Stream *s = parser->streams[i];
 
         if (s->type == HANDLER_VIDEO) {
-            info += QString::asprintf("stream %d:%s\n"
+            info += QString::asprintf("stream %d : %s\n"
                                       "tkhd_width = %d\n"
-                                      "tkhd_height=%d\n"
+                                      "tkhd_height = %d\n"
                                       "language = %s\n"
                                       "width = %d\n"
                                       "height = %d\n"
+                                      "handle = %s\n"
                                       "codec = %s\n",
                                       i+1, HandleType(s->type).c_str(),
                                       s->tkhd_width,
@@ -52,6 +53,7 @@ void HandleStreamInfo(const Parser *parser, QString &info) {
                                       s->language.c_str(),
                                       s->width,
                                       s->height,
+                                      s->handle.c_str(),
                                       s->codec_name);
         }
 
@@ -61,12 +63,14 @@ void HandleStreamInfo(const Parser *parser, QString &info) {
                                       "channel_count = %d\n"
                                       "sample_size = %d\n"
                                       "sample_rate = %d\n"
+                                      "handle = %s\n"
                                       "codec = %s\n",
                                       i, HandleType(s->type).c_str(),
                                       s->language.c_str(),
                                       s->channel_count,
                                       s->sample_size,
                                       s->sample_rate,
+                                      s->handle.c_str(),
                                       s->codec_name);
         }
 
@@ -110,11 +114,28 @@ void Display::ShowBox(QTreeWidget *tree, QTextEdit *edit, Parser *parser) {
     CreateWidgetTree(root, result->child_head);
 
     QString info;
-    info += QString::asprintf("duration = %.02f\n", (float)(parser->duration / parser->time_scale));
+
+    info += QString::asprintf("duration = %s\n", DurationForamtter(parser->duration / parser->time_scale).c_str());
 
     HandleStreamInfo(parser, info);
     edit->append(info);
     QTextCursor cursor = edit->textCursor();
     cursor.setPosition(1);
     edit->setTextCursor(cursor);
+}
+
+std::string Display::DurationForamtter(uint64_t seconds) {
+    uint16_t remain_seconds = 0;
+    uint16_t hour = seconds / 3600;
+    std::string ret;
+    if (hour > 0) ret += (std::to_string(hour) + "时");
+
+    remain_seconds = seconds % 3600;
+    uint16_t min = remain_seconds / 60;
+    if (min > 0) ret += (std::to_string(min) + "分");
+
+    remain_seconds = seconds % 60;
+    if (remain_seconds > 0) ret += (std::to_string(remain_seconds) + "秒");
+
+    return ret;
 }

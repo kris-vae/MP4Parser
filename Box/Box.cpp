@@ -19,7 +19,9 @@ Box::~Box() {
 }
 
 std::string Box::Description() {
-    return "Test";
+    char tmp[128];
+    sprintf(tmp, "offset = %d, len = %d\n", start_pos, size);
+    return std::string(tmp);
 }
 
 std::string Box::ConvertToString(uint32_t bits) {

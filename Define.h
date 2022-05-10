@@ -60,6 +60,7 @@ typedef struct Stream {
     std::vector<uint32_t> stsz_data;
 
     uint64_t *sample_position;
+    std::string handle;
 
 }Stream;
 

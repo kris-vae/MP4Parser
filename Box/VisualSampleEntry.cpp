@@ -18,6 +18,8 @@ void VisualSampleEntry::Parse(struct Parser *parser, uint32_t start_pos) {
     file_reader->Skip(6);
     file_reader->Read16(); //data_reference_index;
 
+    file_reader->Skip(16);
+
     Stream *s = parser->streams[parser->stream_num - 1];
     s->width = file_reader->Read16();
     s->height = file_reader->Read16();

@@ -20,6 +20,7 @@ public:
     void ShowBox(QTreeWidget *root, QTextEdit *edit, Parser *parser);
 private:
     void CreateWidgetTree(QTreeWidgetItem *tree_item, Box *box);
+    static std::string  DurationForamtter(uint64_t seconds);
 };
 
 

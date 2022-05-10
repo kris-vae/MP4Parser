@@ -36,4 +36,6 @@ void MediaHandleRefBox::Parse(struct Parser *parser, uint32_t start_pos) {
         if (c >= ' ')
             component_name.push_back(c);
     }
+
+    if (s != nullptr) s->handle = component_name;
 }
