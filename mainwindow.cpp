@@ -87,7 +87,7 @@ void MainWindow::DisplayHex(uint8_t *buffer, uint32_t len) {
 
     len = Min(len, 4096);
     uint32_t rows = len / 16 + (len % 16 == 0 ? 0 : 1);
-
+    ui->hexView->clear();
     uint32_t index = 0;
     for (uint32_t i = 0; i < rows; i++) {
         QString str;
@@ -109,11 +109,12 @@ void MainWindow::DisplayHex(uint8_t *buffer, uint32_t len) {
         }
 
         str = str1 + "  " + str2;
+        std::cout << str.toStdString()<< std::endl;
         ui->hexView->append(str);
     }
 }
 
-void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint32_t start_pos, uint32_t len) {
+void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint64_t start_pos, uint32_t len) {
     uint8_t *buffer = new uint8_t[len];
     file_reader->Seek(start_pos);
     file_reader->ReadToBuffer(buffer, len);
@@ -122,7 +123,7 @@ void MainWindow::DisplayHexFromReader(struct FileReader *reader, uint32_t start_
     SetHighlight(0, 0);
 }
 
-void MainWindow::SetHighlight(uint32_t start_pos, uint32_t len) {
+void MainWindow::SetHighlight(uint64_t start_pos, uint32_t len) {
     QTextEdit *edit = ui->hexView;
     QTextCursor cursor = edit->textCursor();
 

@@ -4,13 +4,13 @@
 
 #include "MetadataItemValueBox.h"
 
-MetadataItemValueBox::MetadataItemValueBox(uint32_t size, uint32_t type, uint32_t start_pos) : Box(size, type, start_pos) {}
+MetadataItemValueBox::MetadataItemValueBox(uint32_t size, uint32_t type, uint64_t start_pos) : Box(size, type, start_pos) {}
 
 MetadataItemValueBox::~MetadataItemValueBox() {
 
 }
 
-void MetadataItemValueBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void MetadataItemValueBox::Parse(struct Parser *parser, uint64_t start_pos) {
     type_indicator = parser->file_reader->Read32();
     local_indicator = parser->file_reader->Read32();
 

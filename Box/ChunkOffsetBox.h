@@ -13,9 +13,9 @@ public:
     std::vector<uint32_t> chunk_offset_item_table;
 
 public:
-    ChunkOffsetBox(uint32_t size, uint32_t type, uint32_t start_pos);
+    ChunkOffsetBox(uint32_t size, uint32_t type, uint64_t start_pos);
     virtual ~ChunkOffsetBox();
-    void Parse(struct Parser *parser, uint32_t start_pos) override;
+    void Parse(struct Parser *parser, uint64_t start_pos) override;
 };
 
 

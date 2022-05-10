@@ -10,7 +10,7 @@ VisualSampleEntry::~VisualSampleEntry() {
 
 }
 
-void VisualSampleEntry::Parse(struct Parser *parser, uint32_t start_pos) {
+void VisualSampleEntry::Parse(struct Parser *parser, uint64_t start_pos) {
     Box::Parse(parser, start_pos);
     FileReader *file_reader = parser->file_reader;
     file_reader->Seek(start_pos);

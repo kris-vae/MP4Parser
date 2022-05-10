@@ -4,13 +4,13 @@
 
 #include "EditListBox.h"
 
-EditListBox::EditListBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type, start_pos) {}
+EditListBox::EditListBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type, start_pos) {}
 
 EditListBox::~EditListBox() {
 
 }
 
-void EditListBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void EditListBox::Parse(struct Parser *parser, uint64_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     FileReader *file_reader = parser->file_reader;

@@ -4,14 +4,14 @@
 
 #include "DecodingTimeToSampleBox.h"
 
-DecodingTimeToSampleBox::DecodingTimeToSampleBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type,
+DecodingTimeToSampleBox::DecodingTimeToSampleBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type,
                                                                                                             start_pos) {}
 
 DecodingTimeToSampleBox::~DecodingTimeToSampleBox() {
 
 }
 
-void DecodingTimeToSampleBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void DecodingTimeToSampleBox::Parse(struct Parser *parser, uint64_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     FileReader *file_reader = parser->file_reader;

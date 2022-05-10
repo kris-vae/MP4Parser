@@ -4,7 +4,7 @@
 
 #include "MovieHeaderBox.h"
 
-MovieHeaderBox::MovieHeaderBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type, start_pos) {
+MovieHeaderBox::MovieHeaderBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type, start_pos) {
     reserved = std::vector<uint8_t>(10);
     matrix = std::vector<std::vector<uint32_t>>(3,std::vector<uint32_t>(3));
 }
@@ -13,7 +13,7 @@ MovieHeaderBox::~MovieHeaderBox() {
 
 }
 
-void MovieHeaderBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void MovieHeaderBox::Parse(struct Parser *parser, uint64_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     FileReader *file_reader = parser->file_reader;

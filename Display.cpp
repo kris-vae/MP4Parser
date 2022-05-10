@@ -103,7 +103,7 @@ void HandleStreamInfo(const Parser *parser, QString &info) {
 
 void Display::ShowBox(QTreeWidget *tree, QTextEdit *edit, Parser *parser) {
     tree->clear();
-
+    edit->clear();
     QTreeWidgetItem *root = new QTreeWidgetItem(QStringList(QString::fromStdString("root")));
     tree->addTopLevelItem(root);
     root->setExpanded(true);
@@ -115,7 +115,7 @@ void Display::ShowBox(QTreeWidget *tree, QTextEdit *edit, Parser *parser) {
 
     QString info;
 
-    info += QString::asprintf("duration = %s\n", DurationForamtter(parser->duration / parser->time_scale).c_str());
+    info += QString::asprintf("duration = %s\n", DurationFormatter(parser->duration / parser->time_scale).c_str());
 
     HandleStreamInfo(parser, info);
     edit->append(info);
@@ -124,7 +124,7 @@ void Display::ShowBox(QTreeWidget *tree, QTextEdit *edit, Parser *parser) {
     edit->setTextCursor(cursor);
 }
 
-std::string Display::DurationForamtter(uint64_t seconds) {
+std::string Display::DurationFormatter(uint64_t seconds) {
     uint16_t remain_seconds = 0;
     uint16_t hour = seconds / 3600;
     std::string ret;

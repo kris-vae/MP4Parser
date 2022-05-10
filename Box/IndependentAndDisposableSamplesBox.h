@@ -12,9 +12,9 @@ public:
     std::vector<uint8_t> sample_dependency_flags_table;
 
 public:
-    IndependentAndDisposableSamplesBox(uint32_t size, uint32_t type, uint32_t start_pos);
+    IndependentAndDisposableSamplesBox(uint32_t size, uint32_t type, uint64_t start_pos);
     virtual ~IndependentAndDisposableSamplesBox();
-    void Parse(struct Parser *parser, uint32_t start_pos) override;
+    void Parse(struct Parser *parser, uint64_t start_pos) override;
 };
 
 

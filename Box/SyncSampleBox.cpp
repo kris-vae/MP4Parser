@@ -4,13 +4,13 @@
 
 #include "SyncSampleBox.h"
 
-SyncSampleBox::SyncSampleBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type, start_pos) {}
+SyncSampleBox::SyncSampleBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type, start_pos) {}
 
 SyncSampleBox::~SyncSampleBox() {
 
 }
 
-void SyncSampleBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void SyncSampleBox::Parse(struct Parser *parser, uint64_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     number_of_entries = parser->file_reader->Read32();

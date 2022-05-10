@@ -20,9 +20,9 @@ public:
     std::vector<EditItem> edit_item_table;
 
 public:
-    EditListBox(uint32_t size, uint32_t type, uint32_t start_pos);
+    EditListBox(uint32_t size, uint32_t type, uint64_t start_pos);
     virtual ~EditListBox();
-    void Parse(struct Parser *parser, uint32_t start_pos) override;
+    void Parse(struct Parser *parser, uint64_t start_pos) override;
 };
 
 

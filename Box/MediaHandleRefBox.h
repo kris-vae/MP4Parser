@@ -24,11 +24,11 @@ public:
     std::string component_name;
 
 public:
-    MediaHandleRefBox(uint32_t size, uint32_t type, uint32_t start_pos);
+    MediaHandleRefBox(uint32_t size, uint32_t type, uint64_t start_pos);
     virtual ~MediaHandleRefBox();
 
 private:
-    virtual void Parse(struct Parser *parser, uint32_t start_pos) override;
+    virtual void Parse(struct Parser *parser, uint64_t start_pos) override;
 };
 
 

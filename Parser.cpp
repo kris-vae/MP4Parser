@@ -28,7 +28,16 @@
 #include "Box/MetadataItemValueBox.h"
 
 Parser::~Parser() {
+    if (file_reader != nullptr) {
+        delete file_reader;
+        file_reader = nullptr;
+    }
 
+    if (root != nullptr) DestroyBox(root);
+
+    for (int i = 0; i < stream_num; i++) {
+        delete streams[i];
+    }
 }
 
 Parser::Parser() {
@@ -51,7 +60,7 @@ void Parser::init() {
     height = 0;
 }
 
-Box *Parser::CreateBox(uint32_t size, uint32_t type, uint32_t start_pos, bool is_item_box) {
+Box *Parser::CreateBox(uint32_t size, uint32_t type, uint64_t start_pos, bool is_item_box) {
     Box *box = nullptr;
 
     if (is_item_box) {
@@ -153,7 +162,7 @@ Box *Parser::CreateBox(uint32_t size, uint32_t type, uint32_t start_pos, bool is
     return box;
 }
 
-Box *Parser::ReadBox(uint32_t start_pos, bool is_item_box) {
+Box *Parser::ReadBox(uint64_t start_pos, bool is_item_box) {
     uint32_t offset = 0;
 
     uint32_t size = file_reader->Read32();
@@ -278,4 +287,12 @@ void Parser::SamplePosition(struct Stream *s) {
         }
     }
 }
+
+void Parser::DestroyBox(Box *box) {
+    if (box->child_head) DestroyBox(box->child_head);
+    if (box->next) DestroyBox(box->next);
+    delete box;
+}
+
+
 

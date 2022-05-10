@@ -4,14 +4,14 @@
 
 #include "CompositionToDecodeBox.h"
 
-CompositionToDecodeBox::CompositionToDecodeBox(uint32_t size, uint32_t type, uint32_t start_pos) : FullBox(size, type,
+CompositionToDecodeBox::CompositionToDecodeBox(uint32_t size, uint32_t type, uint64_t start_pos) : FullBox(size, type,
                                                                                                           start_pos) {}
 
 CompositionToDecodeBox::~CompositionToDecodeBox() {
 
 }
 
-void CompositionToDecodeBox::Parse(struct Parser *parser, uint32_t start_pos) {
+void CompositionToDecodeBox::Parse(struct Parser *parser, uint64_t start_pos) {
     FullBox::Parse(parser, start_pos);
 
     shift = parser->file_reader->Read32();
