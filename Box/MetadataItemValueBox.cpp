@@ -11,6 +11,7 @@ MetadataItemValueBox::~MetadataItemValueBox() {
 }
 
 void MetadataItemValueBox::Parse(struct Parser *parser, uint32_t start_pos) {
+    name = "info";
     type_indicator = parser->file_reader->Read32();
     local_indicator = parser->file_reader->Read32();
 
