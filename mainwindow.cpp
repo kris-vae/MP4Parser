@@ -227,21 +227,15 @@ class Stream *MainWindow::ShowingStream() {
         return nullptr;
 
     Stream *s = nullptr;
-    if (is_show_video_sample)
-        s = parser->VideoStream();
-    else
-        s = parser->AudioStream();
-
+    s = is_show_video_sample ? parser->VideoStream() : parser->AddStream();
     return s;
 }
 
 void MainWindow::ShowSample(Stream *s, uint32_t index) {
     sample_count = s->stsz_count;
 
-    if (index > sample_count)
-        index = sample_count;
-    if (index <= 0)
-        index = 1;
+    if (index > sample_count) index = sample_count;
+    if (index <= 0) index = 1;
 
     current_sample_num = index;
     char tmp[128];
