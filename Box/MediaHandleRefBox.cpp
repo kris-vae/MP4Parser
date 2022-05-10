@@ -23,7 +23,7 @@ void MediaHandleRefBox::Parse(struct Parser *parser, uint64_t start_pos) {
 
     component_subtype = file_reader->Read32();
     component_subtype_name = ConvertToString(component_subtype);
-    if (s) s->type = component_subtype;
+    if (s && s->type == 0) s->type = component_subtype;
     component_manufacturer = file_reader->Read32();
     component_manufacturer_name = ConvertToString(component_manufacturer);
 
@@ -37,5 +37,5 @@ void MediaHandleRefBox::Parse(struct Parser *parser, uint64_t start_pos) {
             component_name.push_back(c);
     }
 
-    if (s != nullptr) s->handle = component_name;
+    if (s != nullptr && s->handle.empty()) s->handle = component_name;
 }

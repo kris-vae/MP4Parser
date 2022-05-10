@@ -109,7 +109,6 @@ void MainWindow::DisplayHex(uint8_t *buffer, uint32_t len) {
         }
 
         str = str1 + "  " + str2;
-        std::cout << str.toStdString()<< std::endl;
         ui->hexView->append(str);
     }
 }

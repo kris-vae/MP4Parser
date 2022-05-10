@@ -58,14 +58,14 @@ void HandleStreamInfo(const Parser *parser, QString &info) {
         }
 
         if (s->type == HANDLER_AUDIO) {
-            info += QString::asprintf("stream %d:%s\n"
+            info += QString::asprintf("stream %d : %s\n"
                                       "language = %s\n"
                                       "channel_count = %d\n"
                                       "sample_size = %d\n"
                                       "sample_rate = %d\n"
                                       "handle = %s\n"
                                       "codec = %s\n",
-                                      i, HandleType(s->type).c_str(),
+                                      i+1, HandleType(s->type).c_str(),
                                       s->language.c_str(),
                                       s->channel_count,
                                       s->sample_size,
